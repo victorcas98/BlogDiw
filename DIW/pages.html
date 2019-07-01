@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DIW</title>
+  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300|Raleway:300,400,900,700italic,700,300,600">
+  <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body>
+
+  <div class="loader"></div>
+  <div id="myDiv">
+    <!--HEADER-->
+    <div class="header">
+      <div class="bg-color">
+        <header id="main-header">
+          <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+                <a class="navbar-brand" href="index.html">Carvalho's<span class="logo-dec">Blog</span></a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="active"><a href="#main-header">Home</a></li>
+                  <li class=""><a href="#blog">Blog</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </header>
+        
+      </div>
+    </div>
+    <!--/ HEADER-->
+    <!---->
+
+    <section id="blog" class="section-padding wow fadeInUp delay-05s">
+      <div class="container">
+        <div class="row" id="conteudodoPost">
+
+        </div>
+        <hr>
+        <h3>Comentarios</h3>
+        <p>
+            <span>
+					<a onclick="my_onclick(1)" id="clicks" href="#"><i class="fa fa-thumbs-up"></i></a><span id="clicks_1">15</span></span>
+            	<span><a href="#"><i class="fa fa-comments"></i></a> 11</span></p>
+
+        <hr>
+
+
+			<div class="g-comments"
+				data-href="http://localhost/diw/pages.html" 
+				data-width="642"
+				data-first_party_property="BLOGGER"
+				data-view_type="FILTERED_POSTMOD">
+			</div>
+
+			<!-- NÚMERO DE COMENTÁRIOS GOOGLE+ -->
+			<div class="g-commentcount" data-href="http://localhost/diw/pages.html"></div>
+      </div>
+      
+    </section>
+
+    
+
+
+    <footer id="footer">
+      <div class="container">
+        <div class="row text-center">
+          <p>Victor Castro de Carvalho</p>
+          <div class="credits">
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/wow.js"></script>
+  <script src="js/jquery.bxslider.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="contactform/contactform.js"></script>
+  <script src="https://apis.google.com/js/plusone.js"></script>
+  <script src="js/fakedb.js"></script>
+
+  <script type="text/javascript">
+    function my_onclick(id) {
+      var c = document.getElementById("clicks_" + id);
+      var clicks = parseInt(c.textContent);
+      clicks += 1;
+      c.innerHTML = clicks;
+      //? e.preventDefault() : e.returnValue = false;
+    };
+  </script>
+    <script>
+        function mostraPost(id) {
+          let post = db.data.find(post => post.id == id)
+
+          console.log(post)
+          $("#conteudodoPost").append(`
+            <div class="img-detalhe" style="background-image: url(${post.img});"></div>
+            <h1>${post.titulo}</h1>
+            <p>${post.conteudo}</p>
+          `);
+        }
+
+        $(document).on("ready", function () {
+          let params = new URLSearchParams(window.location.search);
+          if (params.has('id')) {
+            mostraPost(params.get('id')); 
+          }
+        })
+  </script>
+
+
+</body>
+</html>
